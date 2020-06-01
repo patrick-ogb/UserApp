@@ -1,0 +1,28 @@
+﻿@model UserDetailsViewModel
+
+@{
+    ViewBag.Title = @Model.PageTitle;
+    var photoPath = "~/images/" + (Model.User.PhotPath ?? "face.png");
+}
+
+<div class="row justify-content-around m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header text-center">
+                <h1>@Model.User.FirstName @Model.User.LastName</h1>
+            </div>
+            <div class="card-body text-center">
+                @if (Model.FileType == ".jpg" || Model.FileType == ".png" || Model.FileType == "gif" || Model.FileType == ".jpeg")
+                {
+                    <img src="@photoPath" class="card-img-top DetailsImagSize" style="margin-left:auto; margin-right:auto" asp-append-version="true" />
+                }
+
+                <h4>ID: @Model.User.Id</h4>
+                <h4>Email: @Model.User.Email</h4>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="home" asp-action="index" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+    </div>
+</div> 
